@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { SignInWithButton, useAuth } from "../../auth"
 import { Wrap } from "../../links"
 import { formUrl, usePublishState } from "../hooks"
+import { useTranslation } from "next-i18next"
 
 const Styled = styled.div`
   display: flex;
@@ -49,43 +50,53 @@ const OpenForm = ({ label, ...props }: { label: string } & ButtonProps) => {
   )
 }
 
-export const CreateTestimony = () => (
-  <Cta
-    title="You Haven't Submitted Testimony"
-    cta={<OpenForm label="Create Testimony" />}
-  />
-)
+export const CreateTestimony = () => {
+  const { t } = useTranslation("publish")
+  return (
+    <Cta
+      title={t("panel.ctas.titles.createTestimony")}
+      cta={<OpenForm label="Create Testimony" />}
+    />
+  )
+}
 
-export const CompleteTestimony = () => (
-  <Cta
-    title="You Have Draft Testimony"
-    cta={
-      <OpenForm
-        label="Complete Testimony"
-        variant="info"
-        className="text-white"
-      />
-    }
-    className="text-info"
-  />
-)
+export const CompleteTestimony = () => {
+  const { t } = useTranslation("publish")
+  return(
+    <Cta
+    title={t("panel.ctas.titles.completeTestimony")}
+      cta={
+        <OpenForm
+          label="Complete Testimony"
+          variant="info"
+          className="text-white"
+        />
+      }
+      className="text-info"
+    />
+  )
+}
 
-export const SignedOut = () => (
-  <Cta
-    title="Sign In to Add Testimony"
-    cta={<SignInWithButton label="Sign In/Sign Up" />}
-  />
-)
+export const SignedOut = () => {
+  const { t } = useTranslation("publish")
+  return (
+    <Cta
+    title={t("panel.ctas.titles.signedOut")}
+      cta={<SignInWithButton label="Sign In/Sign Up" />}
+    />
+  )
+}
 
 export const UnverifiedEmail = () => {
   const id = useAuth().user?.uid!
+  const { t } = useTranslation("publish")
 
   return (
     <Cta
-      title="Verify Your Email to Add Testimony"
+    title={t("panel.ctas.titles.unverifiedEmail")}
       cta={
         <Wrap href={`/profile?id=${id}`}>
-          <Button variant="primary">Verify Your Email</Button>
+          <Button variant="primary">{t("panel.ctas.verifyYourEmail")}</Button>
         </Wrap>
       }
     />
