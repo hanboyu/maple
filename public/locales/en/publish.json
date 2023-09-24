@@ -1,0 +1,16 @@
+{
+    "panel": {
+        "ctas":{
+            "titles":{
+                "createTestimony": "You Haven't Submitted Testimony",
+                "completeTestimony": "You Have Draft Testimony",
+                "signedOut": "Sign In to Add Testimony",
+                "unverifiedEmail": "Verify Your Email to Add Testimony"
+            },
+            "verifyYourEmail": "Verify Your Email"
+        },
+        "ThankYouModal":{
+            "thankYou": "Thank You For Submitting Testimony!"
+        }
+    }
+}
